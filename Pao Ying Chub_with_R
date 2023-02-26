@@ -1,0 +1,61 @@
+print("Welcome to Pao Ying Chub Tournament 2022")
+print("==== Create character ====")
+print("== Insert Character Name ==")
+user_name <- readLines("stdin", n=1)
+print(paste("Let's go", user_name ))
+
+game_f <- function(){
+  option1 <<- "Y"
+  bot_hand <- c("Rock","Paper","Scissors")
+  counts_win  <- 0
+  counts_draw <- 0
+  counts_lose <- 0
+ 
+while(option1 == "Y"){
+  print("Select you choice")
+  print("1.Rock  2.Paper  3.Scissors")
+  user_h <- c("Rock", "Paper", "Scissors")
+  input <- as.numeric(readLines(con="stdin", n=1))
+  user_hand <- user_h[input]
+  print(paste(user_name ,user_hand))
+  bot <- sample(bot_hand,1)
+  print(paste("Bot ",bot))
+if (user_hand == "Rock" && bot == "Rock"){            ##DRAW
+  counts_draw <- counts_draw + 1
+  print("DRAW")
+} else if (user_hand == "Rock" & bot == "Paper"){    ##LOSE
+  counts_lose <- counts_lose + 1
+  print("LOSE")
+} else if (user_hand == "Rock" & bot == "Scissors"){      ##WIN
+  counts_win <- counts_win + 1
+  print("WIN")
+} else if (user_hand == "Paper" & bot == "Rock"){     ##WIN
+  counts_win <- counts_win + 1
+  print("WIN")
+} else if (user_hand == "Paper" & bot == "Paper"){     ##DRAW
+  counts_draw <- counts_draw + 1
+  print("DRAW")
+} else if (user_hand == "Paper" & bot == "Scissors"){    ##LOSE
+  counts_lose <- counts_lose + 1
+  print("LOSE")
+} else if (user_hand == "Scissors" & bot == "Rock"){    ##LOSE
+  counts_lose <- counts_lose + 1
+  print("LOEE")
+} else if (user_hand == "Scissors" & bot == "Paper"){     ##DRAW
+  counts_win <- counts_win + 1
+  print("WIN")
+} else {                                   ##DRAW
+  counts_draw <- counts_draw + 1
+  print("DRAW")
+}
+print(paste("Win =",counts_win))
+print(paste("Lose =", counts_lose))
+print(paste("Draw =", counts_draw))
+
+print("TRY AGAIN?")
+print("Y:Yes   N:No")
+option1 <- readLines("stdin", n=1)
+  }
+print ("Thank you for playing.")   ##ENDGAME
+}
+game_f()
